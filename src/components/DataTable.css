@@ -1,0 +1,463 @@
+/* CSS Variables for Light Mode (Default) */
+.data-table-container {
+  --bg-primary: #f4f4f4;
+  --bg-secondary: #ffffff;
+  --bg-header: #e0e0e0;
+  --bg-selected: rgba(141, 141, 141, 0.2);
+  --bg-hover: rgba(0, 0, 0, 0.02);
+  --bg-batch-actions: #0f62fe;
+  --bg-batch-actions-hover: #0050e6;
+  --bg-slot: #e8daff;
+  --bg-button-hover: rgba(0, 0, 0, 0.05);
+  
+  --text-primary: #161616;
+  --text-secondary: #525252;
+  --text-on-color: #ffffff;
+  --text-slot: #6929c4;
+  
+  --border-color: #c6c6c6;
+  --border-slot: #6929c4;
+  --divider-batch: rgba(255, 255, 255, 0.3);
+  
+  --checkbox-accent: #161616;
+  --sort-icon-opacity: 0.6;
+}
+
+/* CSS Variables for Dark Mode */
+.data-table-container.dark-mode {
+  --bg-primary: #161616;
+  --bg-secondary: #262626;
+  --bg-header: #393939;
+  --bg-selected: rgba(141, 141, 141, 0.3);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-batch-actions: #4589ff;
+  --bg-batch-actions-hover: #0050e6;
+  --bg-slot: #2d1a4a;
+  --bg-button-hover: rgba(255, 255, 255, 0.1);
+  
+  --text-primary: #f4f4f4;
+  --text-secondary: #c6c6c6;
+  --text-on-color: #ffffff;
+  --text-slot: #a78bfa;
+  
+  --border-color: #525252;
+  --border-slot: #6929c4;
+  --divider-batch: rgba(255, 255, 255, 0.3);
+  
+  --checkbox-accent: #f4f4f4;
+  --sort-icon-opacity: 0.7;
+}
+
+.data-table-container {
+  width: 100%;
+  max-width: 1400px;
+  background-color: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header Section */
+.table-header-section {
+  padding: 16px 24px;
+  background-color: var(--bg-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--bg-hover);
+}
+
+.theme-toggle-label {
+  font-size: 14px;
+}
+
+.title-description {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.table-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: var(--text-primary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.table-description {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-secondary);
+  letter-spacing: 0.16px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Batch Actions Bar */
+.batch-actions-bar {
+  background-color: var(--bg-batch-actions);
+  display: flex;
+  align-items: center;
+  padding: 15px 16px;
+  gap: 0;
+  transition: background-color 0.3s ease;
+}
+
+.selected-items-label {
+  flex: 1;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-on-color);
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.batch-actions-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.batch-action-button {
+  background-color: var(--bg-batch-actions);
+  border: none;
+  color: var(--text-on-color);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.16px;
+  padding: 15px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.batch-action-button:hover {
+  background-color: var(--bg-batch-actions-hover);
+}
+
+.batch-action-button:active {
+  background-color: var(--bg-batch-actions-hover);
+  opacity: 0.9;
+}
+
+.batch-divider {
+  width: 1px;
+  height: 16px;
+  background-color: var(--divider-batch);
+  margin: 0 8px;
+  transition: background-color 0.3s ease;
+}
+
+/* Table */
+.table-wrapper {
+  overflow-x: auto;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+/* Table Header */
+.table-header-row {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.select-cell {
+  width: 48px;
+  padding: 14px 16px 30px 16px;
+  vertical-align: top;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--checkbox-accent);
+  transition: accent-color 0.3s ease;
+}
+
+.table-header-cell {
+  padding: 16px 8px 30px 16px;
+  text-align: left;
+  vertical-align: top;
+  min-width: 120px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--text-primary);
+  letter-spacing: 0.16px;
+  transition: color 0.3s ease;
+}
+
+.sort-icon {
+  font-size: 12px;
+  opacity: var(--sort-icon-opacity);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* Table Body */
+.table-row {
+  border-bottom: 1px solid var(--border-color);
+  background-color: transparent;
+  transition: background-color 0.2s ease, border-color 0.3s ease;
+}
+
+.table-row:hover {
+  background-color: var(--bg-hover);
+}
+
+.table-row.selected {
+  background-color: var(--bg-selected);
+}
+
+.table-cell {
+  padding: 16px 16px 30px 16px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-secondary);
+  letter-spacing: 0.16px;
+  vertical-align: top;
+  transition: color 0.3s ease;
+}
+
+/* Slot Component */
+.slot-component {
+  background-color: var(--bg-slot);
+  border: 1px solid var(--border-slot);
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.slot-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.slot-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-slot);
+}
+
+.slot-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: var(--text-slot);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.slot-description {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-slot);
+  letter-spacing: 0.16px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Pagination */
+.pagination-bar {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  min-height: 48px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.pagination-left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.items-per-page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 16px;
+}
+
+.items-per-page label {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-primary);
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.page-select {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-primary);
+  letter-spacing: 0.16px;
+  border: none;
+  background-color: transparent;
+  padding: 14px 8px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23161616' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 32px;
+  transition: color 0.3s ease;
+}
+
+.data-table-container.dark-mode .page-select {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23f4f4f4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.pagination-divider {
+  width: 1px;
+  height: 48px;
+  background-color: var(--border-color);
+  transition: background-color 0.3s ease;
+}
+
+.pagination-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 15px 16px;
+}
+
+.items-range {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-secondary);
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.pagination-right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.page-navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.total-pages {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--text-primary);
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  padding: 15px 0;
+  transition: color 0.3s ease;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 16px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.3s ease;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: var(--bg-button-hover);
+}
+
+.nav-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
