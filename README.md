@@ -53,4 +53,3 @@ npm run build
 
 - **GitHub**: [table-test-mcp](https://github.com/jllerena1/table-test-mcp)
 - **Last Updated**: December 2024
-
