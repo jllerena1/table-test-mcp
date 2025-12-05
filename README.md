@@ -1,1 +1,1 @@
-# table-figma-mcp
+# table-test-mcp
