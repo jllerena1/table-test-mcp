@@ -28,9 +28,10 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
-# Verificar si hay cambios
+# Verificar si hay cambios (incluyendo archivos nuevos)
 echo -e "${YELLOW}Verificando cambios...${NC}"
-if git diff --quiet && git diff --cached --quiet; then
+# Verificar cambios en archivos rastreados y archivos sin rastrear
+if git diff --quiet && git diff --cached --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
     echo -e "${YELLOW}⚠️  No hay cambios para subir${NC}"
     read -p "¿Quieres ver el estado del repositorio? (s/n): " SHOW_STATUS
     if [ "$SHOW_STATUS" = "s" ] || [ "$SHOW_STATUS" = "S" ]; then
