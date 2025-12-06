@@ -96,6 +96,12 @@ VITE_INSTADB_APP_ID=your-app-id-here
 
 The app ID is configured in `src/config/instadb.js` and can be overridden via environment variables.
 
+## Deployment
+
+- **Live App**: [https://table-test-pucack4ia-juan-llerenas-projects.vercel.app](https://table-test-pucack4ia-juan-llerenas-projects.vercel.app)
+- **Platform**: Vercel
+- **Auto-deploy**: Enabled from main branch
+
 ## Repository
 
 - **GitHub**: [table-test-mcp](https://github.com/jllerena1/table-test-mcp)
