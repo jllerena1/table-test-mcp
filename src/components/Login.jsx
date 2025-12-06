@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useAuth } from '../contexts/AuthContext'
+import { AnimatedGridPattern } from './ui/animated-grid-pattern'
+import { cn } from '../lib/utils'
 import './Login.css'
 
 const Login = () => {
@@ -121,7 +123,23 @@ const Login = () => {
   }
 
   return (
-    <div className="login-container">
+    <div className="login-container relative">
+      {/* Animated Grid Pattern Background */}
+      <AnimatedGridPattern
+        numSquares={50}
+        maxOpacity={0.4}
+        duration={3}
+        repeatDelay={1}
+        width={40}
+        height={40}
+        gridColor={darkMode ? "#3d3d3d" : "#ebebeb"}
+        squareColor={darkMode ? "#555555" : "#dcdcdc"}
+        className={cn(
+          "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
+          "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
+        )}
+      />
+      
       {/* Dark Mode Toggle */}
       <button
         className="theme-toggle-button"
@@ -144,6 +162,7 @@ const Login = () => {
           gap: '8px',
           transition: 'all 0.3s ease',
           boxShadow: darkMode ? '0 2px 8px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
+          zIndex: 20,
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = darkMode ? '#525252' : '#f4f4f4'
@@ -156,7 +175,7 @@ const Login = () => {
         <span>{darkMode ? 'Light' : 'Dark'} Mode</span>
       </button>
 
-      <div className="login-card">
+      <div className="login-card relative z-10">
         <div className="login-header">
           <h1 className="login-title">Welcome</h1>
           <p className="login-subtitle">Sign in to access your data table</p>

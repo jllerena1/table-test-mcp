@@ -5,17 +5,17 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #161616; /* Darker background by default */
+  background-color: #ffffff; /* White background by default */
   transition: background-color 0.3s ease;
   position: relative;
 }
 
 body:not(.dark-mode) .login-container {
-  background-color: #f4f4f4; /* Light mode background */
+  background-color: #ffffff; /* Pure white background for light mode */
 }
 
 body.dark-mode .login-container {
-  background-color: #0a0a0a; /* Even darker for dark mode */
+  background-color: #1a1a1a; /* Dark gray background for dark mode */
 }
 
 .login-card {
