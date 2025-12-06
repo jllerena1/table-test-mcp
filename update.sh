@@ -52,18 +52,105 @@ echo -e "${GREEN}✅ Archivos agregados${NC}"
 echo ""
 
 # Paso 2: Hacer commit
-echo -e "${YELLOW}Paso 2: Creando commit...${NC}"
-read -p "Mensaje del commit: " COMMIT_MSG
+echo -e "${YELLOW}Paso 2: Generando mensaje de commit automático...${NC}"
 
-# Validar que se ingresó un mensaje
-if [ -z "$COMMIT_MSG" ]; then
-    echo -e "${RED}❌ Error: Debes ingresar un mensaje de commit${NC}"
-    exit 1
+# Analizar cambios para generar mensaje automático
+CHANGED_FILES=$(git diff --cached --name-status 2>/dev/null)
+UNTRACKED_FILES=$(git ls-files --others --exclude-standard 2>/dev/null)
+
+# Inicializar variables
+NEW_FILES=""
+MODIFIED_FILES=""
+DELETED_FILES=""
+COMMIT_MSG=""
+
+# Analizar archivos modificados/agregados
+if [ -n "$CHANGED_FILES" ]; then
+    while IFS= read -r line; do
+        if [ -z "$line" ]; then continue; fi
+        STATUS=$(echo "$line" | cut -c1)
+        FILE=$(echo "$line" | cut -c2- | xargs)
+        FILENAME=$(basename "$FILE")
+        
+        case "$STATUS" in
+            A|?)
+                if [ -z "$NEW_FILES" ]; then
+                    NEW_FILES="$FILENAME"
+                else
+                    NEW_FILES="$NEW_FILES, $FILENAME"
+                fi
+                ;;
+            M)
+                if [ -z "$MODIFIED_FILES" ]; then
+                    MODIFIED_FILES="$FILENAME"
+                else
+                    MODIFIED_FILES="$MODIFIED_FILES, $FILENAME"
+                fi
+                ;;
+            D)
+                if [ -z "$DELETED_FILES" ]; then
+                    DELETED_FILES="$FILENAME"
+                else
+                    DELETED_FILES="$DELETED_FILES, $FILENAME"
+                fi
+                ;;
+        esac
+    done <<< "$CHANGED_FILES"
+fi
+
+# Analizar archivos sin rastrear (antes de git add)
+UNTRACKED_BEFORE_ADD=$(git ls-files --others --exclude-standard 2>/dev/null)
+if [ -n "$UNTRACKED_BEFORE_ADD" ]; then
+    while IFS= read -r file; do
+        if [ -z "$file" ]; then continue; fi
+        FILENAME=$(basename "$file")
+        if [ -z "$NEW_FILES" ]; then
+            NEW_FILES="$FILENAME"
+        else
+            # Evitar duplicados
+            if ! echo "$NEW_FILES" | grep -q "$FILENAME"; then
+                NEW_FILES="$NEW_FILES, $FILENAME"
+            fi
+        fi
+    done <<< "$UNTRACKED_BEFORE_ADD"
+fi
+
+# Generar mensaje de commit basado en los cambios
+if [ -n "$NEW_FILES" ] && [ -n "$MODIFIED_FILES" ]; then
+    COMMIT_MSG="Update: Modificaciones y nuevos archivos"
+elif [ -n "$NEW_FILES" ]; then
+    FILE_COUNT=$(echo "$NEW_FILES" | tr ',' '\n' | wc -l | xargs)
+    if [ "$FILE_COUNT" -eq 1 ]; then
+        COMMIT_MSG="Add: $(echo "$NEW_FILES" | cut -d',' -f1 | xargs)"
+    else
+        COMMIT_MSG="Add: Nuevos archivos y funcionalidades"
+    fi
+elif [ -n "$MODIFIED_FILES" ]; then
+    FILE_COUNT=$(echo "$MODIFIED_FILES" | tr ',' '\n' | wc -l | xargs)
+    if [ "$FILE_COUNT" -eq 1 ]; then
+        COMMIT_MSG="Update: $(echo "$MODIFIED_FILES" | cut -d',' -f1 | xargs)"
+    else
+        COMMIT_MSG="Update: Mejoras y correcciones"
+    fi
+elif [ -n "$DELETED_FILES" ]; then
+    COMMIT_MSG="Remove: Archivos eliminados"
+else
+    COMMIT_MSG="Update: Cambios varios"
+fi
+
+# Mostrar el mensaje generado y permitir confirmar o editar
+echo -e "${BLUE}Mensaje generado: ${GREEN}$COMMIT_MSG${NC}"
+echo ""
+read -p "¿Usar este mensaje? (Enter para confirmar, o escribe uno nuevo): " USER_MSG
+
+if [ -n "$USER_MSG" ]; then
+    COMMIT_MSG="$USER_MSG"
 fi
 
 git commit -m "$COMMIT_MSG"
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ Commit creado exitosamente${NC}"
+    echo -e "${BLUE}   Mensaje: $COMMIT_MSG${NC}"
 else
     echo -e "${RED}❌ Error al crear el commit${NC}"
     exit 1
