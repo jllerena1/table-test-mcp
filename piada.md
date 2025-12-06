@@ -1,19 +1,24 @@
 # Joke of the Day
 
-**Why did the developer go broke after deploying to Vercel?**
+**Why did the developer's app show a blank page?**
 
-Because they kept running out of serverless functions! 💸
+Because they commented out the schema and forgot to add an error boundary! 😅
 
-(Get it? Because serverless isn't actually free-less!)
-
----
-
-**Deployment Joke Bonus:**
-
-Why do developers love Vercel so much?
-
-Because it's the only place where pushing to production doesn't give them anxiety attacks! One push and you're live - no servers, no stress, just serverless success! 🚀
+The app was like: "I have nothing to say... literally NOTHING!" 
 
 ---
 
-*Updated: January 15, 2025 - Fresh from deployment!*
+**After the fix:**
+
+Developer: "Why is the page blank?"
+App: "Because you told me to keep my schema to myself!"
+Developer: *uncomments schema*
+App: "NOW we can talk!" 💬✨
+
+---
+
+**Moral of the story**: Never ghost your schema in production! It needs to speak up!
+
+---
+
+*Updated: January 15, 2025 - Fresh from fixing the deployment!*
