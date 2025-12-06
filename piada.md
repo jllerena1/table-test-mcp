@@ -1,24 +1,28 @@
 # Joke of the Day
 
-**Why did the developer's app show a blank page?**
+**Why did the developer's app show a blank page in production?**
 
-Because they commented out the schema and forgot to add an error boundary! 😅
+Because `useAuth()` returned `undefined` and the code was like: "I don't know what to do with this... I'll just show nothing!" 😅
 
-The app was like: "I have nothing to say... literally NOTHING!" 
-
----
-
-**After the fix:**
-
-Developer: "Why is the page blank?"
-App: "Because you told me to keep my schema to myself!"
-Developer: *uncomments schema*
-App: "NOW we can talk!" 💬✨
+The developer: "Why isn't it working?"
+The code: "I'm loading... wait, am I loading? I don't know! `loading` is undefined!"
+The developer: *adds proper error handling*
+The code: "Oh NOW I know what to do! Let me show you the login page!" 🎉
 
 ---
 
-**Moral of the story**: Never ghost your schema in production! It needs to speak up!
+**The Sequel:**
+
+Developer: "But why is it still blank?"
+Console: "[InstantDB] ERROR: db.useAuth is not a function"
+Developer: "Ah! I need to validate before using!"
+Console: "[InstantDB] Successfully initialized with schema"
+App: "Finally! I can breathe!" 💨
 
 ---
 
-*Updated: January 15, 2025 - Fresh from fixing the deployment!*
+**Moral of the story**: Always validate your hooks and add logging! Your future self (and production users) will thank you!
+
+---
+
+*Updated: January 15, 2025 - Fixed error handling and production logging!*
