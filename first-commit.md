@@ -42,5 +42,5 @@ Este proyecto es una tabla de datos creada desde un diseño de Figma con las sig
 
 ### Fecha
 
-Diciembre 2024
+Diciembre 2025
 
