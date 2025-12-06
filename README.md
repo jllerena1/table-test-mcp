@@ -98,9 +98,12 @@ The app ID is configured in `src/config/instadb.js` and can be overridden via en
 
 ## Deployment
 
-- **Live App**: [https://table-test-pucack4ia-juan-llerenas-projects.vercel.app](https://table-test-pucack4ia-juan-llerenas-projects.vercel.app)
+- **Live App**: [https://table-test-mcp.vercel.app](https://table-test-mcp.vercel.app)
 - **Platform**: Vercel
 - **Auto-deploy**: Enabled from main branch
+- **Alternative URLs**:
+  - https://table-test-mcp-juan-llerenas-projects.vercel.app
+  - https://table-test-mcp-git-main-juan-llerenas-projects.vercel.app
 
 ## Repository
 
