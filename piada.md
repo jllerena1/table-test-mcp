@@ -1,13 +1,19 @@
 # Joke of the Day
 
-**Why did the React component break up with the database?**
+**Why did the developer go broke after deploying to Vercel?**
 
-Because it couldn't handle the relationship! The component kept trying to fetch data, but the database was always querying for something else. They just couldn't sync up their states! 😄
+Because they kept running out of serverless functions! 💸
 
----
-
-**Update:** Good news! They're back together now! InstantDB helped them work things out with real-time sync. The component said "I can't live without you" and the database replied "I'll always be there for you, in real-time!" 💕
+(Get it? Because serverless isn't actually free-less!)
 
 ---
 
-*Generated during InstantDB full-stack implementation*
+**Deployment Joke Bonus:**
+
+Why do developers love Vercel so much?
+
+Because it's the only place where pushing to production doesn't give them anxiety attacks! One push and you're live - no servers, no stress, just serverless success! 🚀
+
+---
+
+*Updated: January 15, 2025 - Fresh from deployment!*
