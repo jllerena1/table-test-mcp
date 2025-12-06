@@ -5,27 +5,37 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #161616; /* Darker background by default */
   transition: background-color 0.3s ease;
+  position: relative;
+}
+
+body:not(.dark-mode) .login-container {
+  background-color: #f4f4f4; /* Light mode background */
 }
 
 body.dark-mode .login-container {
-  background-color: #161616;
+  background-color: #0a0a0a; /* Even darker for dark mode */
 }
 
 .login-card {
   width: 100%;
   max-width: 400px;
-  background-color: #ffffff;
+  background-color: #262626; /* Darker card by default */
   border-radius: 8px;
   padding: 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+body:not(.dark-mode) .login-card {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 body.dark-mode .login-card {
-  background-color: #262626;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background-color: #1a1a1a; /* Even darker card for dark mode */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .login-header {
@@ -36,23 +46,23 @@ body.dark-mode .login-card {
 .login-title {
   font-size: 28px;
   font-weight: 600;
-  color: #161616;
+  color: #f4f4f4; /* Light text by default (dark mode) */
   margin-bottom: 8px;
   transition: color 0.3s ease;
 }
 
-body.dark-mode .login-title {
-  color: #f4f4f4;
+body:not(.dark-mode) .login-title {
+  color: #161616; /* Dark text for light mode */
 }
 
 .login-subtitle {
   font-size: 14px;
-  color: #6f6f6f;
+  color: #a8a8a8; /* Light gray by default (dark mode) */
   transition: color 0.3s ease;
 }
 
-body.dark-mode .login-subtitle {
-  color: #a8a8a8;
+body:not(.dark-mode) .login-subtitle {
+  color: #6f6f6f; /* Darker gray for light mode */
 }
 
 .login-form {
@@ -70,29 +80,29 @@ body.dark-mode .login-subtitle {
 .form-label {
   font-size: 14px;
   font-weight: 500;
-  color: #161616;
+  color: #f4f4f4; /* Light text by default (dark mode) */
   transition: color 0.3s ease;
 }
 
-body.dark-mode .form-label {
-  color: #f4f4f4;
+body:not(.dark-mode) .form-label {
+  color: #161616; /* Dark text for light mode */
 }
 
 .form-input {
   width: 100%;
   padding: 12px 16px;
   font-size: 14px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #525252; /* Dark border by default */
   border-radius: 4px;
-  background-color: #ffffff;
-  color: #161616;
+  background-color: #393939; /* Dark background by default */
+  color: #f4f4f4; /* Light text by default */
   transition: all 0.3s ease;
 }
 
-body.dark-mode .form-input {
-  background-color: #393939;
-  border-color: #525252;
-  color: #f4f4f4;
+body:not(.dark-mode) .form-input {
+  background-color: #ffffff;
+  border-color: #d1d1d1;
+  color: #161616;
 }
 
 .form-input:focus {
@@ -109,18 +119,18 @@ body.dark-mode .form-input {
 .email-display {
   font-size: 14px;
   font-weight: 500;
-  color: #0f62fe;
+  color: #78a9ff; /* Light blue by default (dark mode) */
   margin-bottom: 16px;
   padding: 8px;
-  background-color: #e5f0ff;
+  background-color: #1e3a5f; /* Dark blue background by default */
   border-radius: 4px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-body.dark-mode .email-display {
-  color: #78a9ff;
-  background-color: #1e3a5f;
+body:not(.dark-mode) .email-display {
+  color: #0f62fe;
+  background-color: #e5f0ff;
 }
 
 .code-inputs-container {
@@ -136,17 +146,17 @@ body.dark-mode .email-display {
   text-align: center;
   font-size: 24px;
   font-weight: 600;
-  border: 2px solid #d1d1d1;
+  border: 2px solid #525252; /* Dark border by default */
   border-radius: 4px;
-  background-color: #ffffff;
-  color: #161616;
+  background-color: #393939; /* Dark background by default */
+  color: #f4f4f4; /* Light text by default */
   transition: all 0.3s ease;
 }
 
-body.dark-mode .code-input {
-  background-color: #393939;
-  border-color: #525252;
-  color: #f4f4f4;
+body:not(.dark-mode) .code-input {
+  background-color: #ffffff;
+  border-color: #d1d1d1;
+  color: #161616;
 }
 
 .code-input:focus {
@@ -186,7 +196,7 @@ body.dark-mode .code-input {
   width: 100%;
   padding: 8px 16px;
   font-size: 14px;
-  color: #6f6f6f;
+  color: #a8a8a8; /* Light gray by default (dark mode) */
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -194,16 +204,16 @@ body.dark-mode .code-input {
   margin-top: 8px;
 }
 
-body.dark-mode .back-button {
-  color: #a8a8a8;
+body:not(.dark-mode) .back-button {
+  color: #6f6f6f; /* Darker gray for light mode */
 }
 
 .back-button:hover:not(:disabled) {
-  color: #161616;
+  color: #f4f4f4; /* Light text on hover (dark mode) */
 }
 
-body.dark-mode .back-button:hover:not(:disabled) {
-  color: #f4f4f4;
+body:not(.dark-mode) .back-button:hover:not(:disabled) {
+  color: #161616; /* Dark text on hover (light mode) */
 }
 
 .back-button:disabled {
@@ -213,34 +223,34 @@ body.dark-mode .back-button:hover:not(:disabled) {
 
 .error-message {
   padding: 12px;
-  background-color: #fff1f1;
-  border: 1px solid #ffd7d9;
+  background-color: #3d1f1f; /* Dark error background by default */
+  border: 1px solid #5a2a2a;
   border-radius: 4px;
-  color: #da1e28;
+  color: #ff8389; /* Light error text by default */
   font-size: 14px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-body.dark-mode .error-message {
-  background-color: #3d1f1f;
-  border-color: #5a2a2a;
-  color: #ff8389;
+body:not(.dark-mode) .error-message {
+  background-color: #fff1f1;
+  border-color: #ffd7d9;
+  color: #da1e28;
 }
 
 .success-message {
   padding: 12px;
-  background-color: #e8f5e9;
-  border: 1px solid #c8e6c9;
+  background-color: #1e3a1e; /* Dark success background by default */
+  border: 1px solid #2d4d2d;
   border-radius: 4px;
-  color: #2e7d32;
+  color: #6fcf97; /* Light success text by default */
   font-size: 14px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-body.dark-mode .success-message {
-  background-color: #1e3a1e;
-  border-color: #2d4d2d;
-  color: #6fcf97;
+body:not(.dark-mode) .success-message {
+  background-color: #e8f5e9;
+  border-color: #c8e6c9;
+  color: #2e7d32;
 }
